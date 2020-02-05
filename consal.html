@@ -1,0 +1,486 @@
+<!Doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+	
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	
+	
+
+	
+	<script>
+	
+	
+ var acc = document.getElementsByClassName("cstm-accordion");
+ var i;
+ for (i = 0; i < acc.length; i++) {
+ acc[i].addEventListener("click", function() {
+ this.classList.toggle("cstm-active-accordion");
+ var panel = this.nextElementSibling;
+ if (panel.style.maxHeight){
+ panel.style.maxHeight = null;
+ } else {
+ panel.style.maxHeight = panel.scrollHeight + "px";
+ } 
+ });
+ }
+ function openPage(pageName,elmnt,color) {
+ var i, tabcontent, arrows;
+ tabcontent = document.getElementsByClassName("tabcontent");
+
+ for (i = 0; i < tabcontent.length; i++) {
+ tabcontent[i].style.display = "none";
+ }
+
+ arrows = document.getElementsByClassName("cstm-arrow ");
+ for (i = 0; i < arrows.length; i++) {
+ arrows[i].style.display="none";
+ }
+ document.getElementById(pageName+'-arrow').style.display = "inline-block";
+ //elmnt.style.backgroundColor = color;
+ }
+ 
+ jQuery(document).ready(function(){
+ jQuery(".cstm-accordion").click(function() {
+ //alert(jQuery(this).attr('rel'));
+ var acractive = jQuery(this).attr('rel');
+ jQuery('html, body').animate({
+ scrollTop: jQuery("#"+acractive).offset().top
+ }, 200);
+ });
+ jQuery(".cstm-nav-li").click(function(){
+ var cs_tab = jQuery(this).attr('rel');
+ jQuery(".cstm-nav-li").each(function(){
+ jQuery(".cstm-nav-li").removeClass('cs-active');
+ //jQuery(".cs-main").addClass('cs-disabled');
+ jQuery(".cs-main").hide()
+ });
+ jQuery(this).addClass('cs-active');
+ jQuery("#"+cs_tab).fadeIn();
+ //jQuery("#"+cs_tab).removeClass('cs-disabled');
+ });
+ jQuery('.cstm-arrow').addClass('invi');
+ jQuery('.tablink').click(function(){
+ var ativeArrow = jQuery(this).attr('rel');
+jQuery('.tablink').removeClass('prd-active');
+      jQuery(this).addClass('prd-active');
+ //alert(ativeArrow);
+ /*jQuery("#"+ativeArrow).show();*/
+ /*jQuery('#'+ativeArrow).slideDown(500);*/
+ jQuery('#'+ativeArrow).slideToggle();
+ });
+ jQuery(".cstm-ser-nav-li").click(function(){
+ var ser_tab = jQuery(this).attr('rel');
+ jQuery(".cstm-ser-nav-li").each(function(){
+ jQuery(".cstm-ser-nav-li").removeClass('ser-active ser-arrw');
+ //jQuery(".ser-main").addClass('ser-disabled');
+ jQuery(".ser-main").hide()
+ });
+ jQuery(this).addClass('ser-active ser-arrw');
+ jQuery("#"+ser_tab).fadeIn();
+ //jQuery("#"+ser_tab).removeClass('ser-disabled');
+ });
+});
+// Get the element with id="defaultOpen" and click on it
+
+var defaultOpn = jQuery("#defaultOpen").attr('rel');
+//var DID = defaultOpn+"-arrow";
+//alert(DID);
+jQuery("#"+defaultOpn).show();
+
+</script>
+	
+	
+
+	
+	<style>
+		
+		.set {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .set:hover {
+  background-color: #ccc;
+}
+
+.set:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+
+		 .cstm-ser-nav-v {
+ width: 15%;
+ float: left;
+ min-height: 317px;
+ border-right: 1px solid #ccc;
+ text-align: right;
+ }
+ .cstm-ser-nav-li {
+ list-style-type: none;
+ display: block;
+ padding: 10px 0;
+ cursor: pointer;
+ font-weight: 600;
+ color: #2d2d2d;
+ font-size: 16px;
+ margin-bottom: 0;
+ height: 44px;
+ }
+ .cstm-ser-nav-li:hover{
+ color: #1f409e;
+ }
+ .services-wraper{
+ float: left;
+ width: 100%;
+ 
+ }
+ .ser-main {
+ float: left;
+ width: 75%;
+ padding: 20px;
+max-height: 453px;
+}
+ .ser-active {
+ color: #1f409e;
+ /*border-right: 2px solid #1f409e;*/
+ }
+ .ser-ul {
+ padding: 27% 0;
+ }
+ .col-4{
+ width:25%;
+ float:left;
+ padding: 15px
+ }
+ .ser-row{
+ float: left;
+ width: 100%;
+ padding:0;
+ }
+ .ser-disabled{
+ display:none;
+ }
+
+ .ser-arrw::after{
+ content:'';
+ width: 0; 
+ height: 0; 
+ border-top: 10px solid transparent;
+ border-bottom: 10px solid transparent; 
+ border-right:10px solid blue; 
+ display: inline-table;
+ padding: 0 10px !important;
+ }
+ .ser-p{
+ display: inline;
+ top: 5px;
+ position: relative;
+ }
+ /*#ser-first::after{
+ content:'';
+ width: 0; 
+ height: 0; 
+ border-top: 10px solid transparent;
+ border-bottom: 10px solid transparent; 
+ border-right:10px solid blue; 
+ display: inline-table;
+ }*/
+ .cstm-ser-nav-li:after{
+ content:'';
+ padding:0 15px;
+ }
+.vs-left{
+ text-align:left;
+	
+}
+.section1{ 
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+
+	
+}
+		
+		
+.lp-read-m{
+ color: #f18534 !important;
+}
+.service-m-icon{
+width:25px;}
+	
+	.col-12 >p {
+    margin: 3px auto;
+}
+		
+		
+	
+		.col-12 {
+    padding: 5px;
+}
+
+	</style>
+	
+	
+	</head>
+<body>
+	
+	
+
+	
+	
+	
+	
+	<div class="services-wraper">
+ <div class="cstm-ser-nav-v">
+ <ul class="ser-ul">
+ <li id="ser-first" class="cstm-ser-nav-li ser-active ser-arrw" rel="ser-main-first"><p class="ser-p">Digital Marketing</p></li>
+ <li id="ser-second" class="cstm-ser-nav-li" rel="ser-main-second"><p class="ser-p">Physical Co-Branding</p></li>
+ <li id="ser-third" class="cstm-ser-nav-li" rel="ser-main-third"><p class="ser-p">Process Consulting</p></li>
+ <li id="ser-fourth" class="cstm-ser-nav-li" rel="ser-main-fourth"><p class="ser-p">Healthcare IT Services</p></li>
+ <li id="ser-fifth" class="cstm-ser-nav-li" rel="ser-main-fifth"><p class="ser-p">Digital Payment Services</p></li>
+ <li id="ser-sixth" class="cstm-ser-nav-li" rel="ser-main-sixth"><p class="ser-p">24x7 Cloud Operation</p></li>
+ <li id="ser-seventh" class="cstm-ser-nav-li" rel="ser-main-seventh"><p class="ser-p">24x7 Customer Care</p></li>
+ </ul>
+ </div>
+ <div id="ser-main-first" class="ser-main">
+ <div class="ser-row">
+ <div class="col-12">
+ <button class="set">Section 1</button>
+<div class="section1">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+	 
+	 
+ <button class="set">How are you?</button>
+
+ <div class="col-12 vs-left">
+ <p class="vsinfo">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ <!--ser-2-->
+ <div id="ser-main-second" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="col-12">
+<div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+	 
+	 <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ <!--ser-3-->
+ <div id="ser-main-third" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+	 
+	 <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div> </div>
+ </div>
+ <!--ser-4-->
+ <div id="ser-main-fourth" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/IT-Services.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Hospital typically requires constant upgrades and automation to their software and services, however all these various services works in silos due to lack of integration. This services brings IT services and become lifelong IT partner for all type of IT services. <br /><a class="lp-read-m" href="/dhs/healthcare-it-services/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ <!--ser-5-->
+ <div id="ser-main-fifth" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+	 
+	 <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div> </div>
+ </div>
+ <!--ser-6-->
+ <div id="ser-main-sixth" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+	 
+	 <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div> </div>
+ </div>
+ <!--ser-7-->
+ <div id="ser-main-seventh" class="ser-main" style="display:none;">
+ <div class="ser-row">
+ <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+	 
+	 <div class="col-12">
+ <div class="set">How are you?</div>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+
+<!----------------Services On Mobile----------------->
+<div class="ser-mobile-modal">
+<!--<h4>Services</h4>-->
+<button class="cstm-accordion" id="acr-ser-digital-marketing" rel="acr-ser-digital-marketing"><img class="service-m-icon" src="wp-content/uploads/2018/04/digital-marketing-icon.png" />
+ Digital Marketing</button><!--1-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/digital-marketing.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">The marketing of products or services using digital channels to reach consumers. The key objective is to promote brands through various forms of digital media. <br /><a class="lp-read-m" href="/dhs/services/digital-marketing/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+
+ <button class="cstm-accordion" id="acr-ser-physical-co-branding" rel="acr-ser-physical-co-branding"><img class="service-m-icon" src="wp-content/uploads/2018/04/physical-co-branding-icon.png"> Physical Co-Branding</button><!--2-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+<div class="col-12">
+ <img src="wp-content/uploads/2018/04/co-branding.png"/>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Healthcare providers promote themselves as SMART Providers using Media, News, Billboards, Signage and Banners in various camps. Patient satisfaction, digital connectivity and SMART services are the key components of this service. <br /><a class="lp-read-m" href="/dhs/physical-co-branding/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+
+ <button class="cstm-accordion" id="acr-ser-process-consulting" rel="acr-ser-process-consulting"><img class="service-m-icon" src="wp-content/uploads/2018/04/Process-consulting-icon.png" /> Process Consulting</button><!--3-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/Process-consulting.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">India medical practice and its process compliance is of utmost importance and our services helps the cutsomers to achieve the same using advanced automation tools and services. <br /><a class="lp-read-m" href="/dhs/process-consulting-2/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ 
+ <button class="cstm-accordion" id="acr-ser-helthcare-services" rel="acr-ser-helthcare-services"><img class="service-m-icon" src="wp-content/uploads/2018/04/IT-Services-icon.png" /> Healthcare IT Services</button><!--4-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/IT-Services.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Hospital typically requires constant upgrades and automation to their software and services, however all these various services works in silos due to lack of integration. This services brings IT services and become lifelong IT partner for all type of IT services. <br /><a class="lp-read-m" href="/dhs/healthcare-it-services/" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ 
+ <button class="cstm-accordion" id="acr-ser-digital-payment-services" rel="acr-ser-digital-payment-services"><img class="service-m-icon" src="wp-content/uploads/2018/04/Digital-Payment-icon.png" /> Digital Payment Services</button><!--5-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/Digital-Payment.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Patient demands cashless for all types of services whether it is covered under insurance or not. This service brings cashless payment using mobile wallet, netbanking, credit and debit cards via pre-defined payment gateways. <br /><a class="lp-read-m" href="#" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+
+ <button class="cstm-accordion" id="acr-ser-cloud-operation" rel="acr-ser-cloud-operation"><img class="service-m-icon" src="wp-content/uploads/2018/04/Cloud-operation-icon.png" /> 24x7 Cloud Operation</button><!--6-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+ <div class="col-12">
+ <img src="wp-content/uploads/2018/04/Cloud-operation.png" />
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Healthcare services are mission critical services requiring 24x7 patient access to services by healthcare providers. Our service provides SLA (Service level Agreement) backed cloud operations and takes the backoffice works. <br /><a class="lp-read-m" href="#" target="_blank">read more..</a></p>
+ </div>
+ </div>
+ </div>
+ 
+<button class="cstm-accordion" id="acr-ser-customer-care" rel="acr-ser-customer-care"><img class="service-m-icon" src="wp-content/uploads/2018/04/Customer-service-icon.png" /> 24x7 Customer Care</button><!--7-->
+ <div class="panel cs-panel">
+ <div class="cs-row">
+<div class="col-12">
+ <img src="wp-content/uploads/2018/04/Customer-service.png"/>
+ </div>
+ <div class="col-12 vs-left">
+ <p class="vs-info">Patient has access to both selfcare and assisted care via call centre. As part of self care patient has easy to select option and resolve the problem instantly, while assisted care requires the patient to make call and get resolution. <br /><a class="lp-read-m" href="/dhs/contact-us/" target="_blank">read more..</a></p>
+ </div> </div>
+ </div>
+</div>
+		</div>
+	
+		<script>
+var acc = document.getElementsByClassName("set");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("section1");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>

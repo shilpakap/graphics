@@ -1,0 +1,1233 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+	<link rel="stylesheet" type="text/css" href="main2.css">
+	
+	
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	
+	
+	
+	<script src="js/text.js"></script>
+
+
+<script>
+$(document).ready(function () {
+$("#toggle").click(function() {
+  $(this).toggleClass("on");
+  $(".menu").slideToggle();
+});
+});	
+	</script>
+	
+<!--	small slider bottom-->
+	
+	<script>	
+		$(document).ready(function() {
+    $('#myCarousel').carousel({
+	    interval: 10000
+	})
+			
+});
+	</script>
+	
+
+	
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	
+<!--	latest news-->
+	
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css">
+	<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+	
+	<script>
+		
+$(document).ready(function() {
+    $("#news-slider").owlCarousel({
+        items : 2,
+        itemsDesktop : [1199,2],
+        itemsMobile : [600,1],
+        pagination :true,
+        autoPlay : true
+    });
+	
+	});
+		
+</script>
+	
+	
+
+	<script>
+		
+$(document).ready(function () {
+    var i = new Image(); $('.open-btn').show(); $('.close-btn').hide(); if (!checkCookie("Chat_visible")) {
+        $(i).load(function ()
+        { $('.chat').animate({ 'right': '0px' }, 1500); $('.close-btn').show(); $('.open-btn').hide() })
+    }
+    i.src = '/wp-content/themes/mototheme/images/chat-bg.png'; $('.open-btn').click(openChat); $('.close-btn').click(closeChat); $('#chat_email').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which); if (validEmail($(this).val()))
+        { $(this).css({ 'border': '1px solid #325600' }) }
+        if (keycode == '13')
+        { getHref() }
+    }); $('#lounch_chat').click(getHref)
+}); function sendOfflineMessage() {
+    var mail = ($('#chat_email').val() == 'Email: (required)' || $('#chat_email').val() == '') ? '' : $('#chat_email').val(); if (!validEmail(mail))
+    { $('#chat_email').css('border-color', 'red') }
+    else {
+        var name = ($('#chat_name').val() == 'Name:' || $('#chat_name').val() == '') ? 'Guest' : $('#chat_name').val(); if ($('#chat_offline_message').val() == 'Message: (required)' || $('#chat_offline_message').val() == '')
+        { $('#chat_offline_message').css({ 'border': '1px solid #FF0000' }) }
+        else {
+            $('#chat_offline_message').css({ 'border': '1px solid #325600' }); if ($('#chat_name').val() == 'Name:') $('#chat_name').val(""); $('.third_p').text("Processing your request, please wait..."); $('#send_offline_message').hide(); $.ajax({
+                url: '/flash-templates/', type: 'POST', dataType: 'json', data: { 'form1': "chat_form", 'chat_name': $('#chat_name').val(), 'email': $('#chat_email').val(), 'chat_offline_message': $('#chat_offline_message').val() }, success: function (data) {
+                    if (data.success) { $('.fist_p').html("<strong>Thank you!</strong><br /><br />Your message has been sent to our managers and someone will contact you shortly.") } else { $('.fist_p').html(data.errors) }
+                    $('#chat_name').hide(); $('#chat_email').hide(); $('#chat_offline_message').hide(); $('.chat_message_status').hide(); $('.chat-text-small').html('<br />' + 'In the meantime, you may want to check out some helpful resources that ' + 'our other users just like you appear to enjoy.' + '<ul><li><' + 'a href="http://www.motocms.com/why/" target="_blank">Power Tips on Admin Panel Usage</a></li>' + '<li><' + 'a ' + ' href="http://www.motocms.com/faq/" target="_blank">Our F.A.Q. section</a></li>' + '<li><' + 'a href="http://www.facebook.com/motocms" target="_blank">Our Facebook community</a></li></ul>').css({ 'font-size': '14px' }); $('.chat-text-small ul').css({ 'list-style-type': 'circle', 'padding': '20px 12px 10px 15px' }); $('.chat-text-small li').css({ 'padding-bottom': '15px' }); $('.chat-text-small a').css({ 'color': '#bfdb83' })
+                }, error: function (data)
+                { $('.third_p').text("Message was not sent!"); $('.third_p').show(); $('#send_offline_message').show() }
+            })
+        }
+    }
+}
+function launchChat(data) {
+    var url = (data.href) ? data.href : "#"; if (url == "#")
+        return !1; if ((data.presence == '1') || (data.presence == '2')) {
+            window.open(url, "chat", "height=750,width=800"); try {
+                if (_gaq)
+                    _gaq.push(['_trackEvent', 'SiteUsage', 'Chat', 'StartChat'])
+            } catch (e) { }
+        }
+        else { offlineForm1(); $('#send_offline_message').click(sendOfflineMessage) }
+}
+function getHref() {
+    var href = "#"; var mail = ($('#chat_email').val() == 'Email: ' || $('#chat_email').val() == '') ? '' : $('#chat_email').val(); if (!validEmail(mail)) { $('#chat_email').addClass('invalid') } else {
+        var name = ($('#chat_name').val() == '') ? 'Guest' : $('#chat_name').val(); var chatDomain = $('#form1').data('chat-domain'); if (!chatDomain)
+            chatDomain = 'www.motocms.com'; getLink({ name: name, mail: mail, message: "", domain: chatDomain })
+    }
+    return !0
+}
+function checkCookie(c_name) {
+    if (document.cookie.length > 0) {
+        c_start = document.cookie.indexOf(c_name + "="); if (c_start != -1)
+        { return !0 }
+    }
+    return !1
+}
+function setCookie(c_name, value, exdays)
+{ var exdate = new Date(); exdate.setDate(exdate.getDate() + exdays); var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString()); document.cookie = c_name + "=" + c_value + "; path=/" }
+function validEmail(mail) {
+    var ind = mail.indexOf('@'); if (ind == -1 || ind == 0 || ind == mail.length - 1)
+    { return !1 }
+    var indOfLastDot = mail.lastIndexOf('.'); if (indOfLastDot == -1 || (mail.length - 1) - indOfLastDot < 2 || indOfLastDot - ind < 2)
+    { return !1 }
+    return !0
+}
+function getLink(data) { $.ajax({ url: '/get_chat_operator_status.php', type: 'POST', async: !1, dataType: 'json', data: { ajax: 'true', app: 'chat', action: 'getlink', data: data }, success: function (data) { launchChat(data.data) }, error: function (data) { } }) }
+function openChat()
+{ $('.chat').animate({ 'right': '0' }, 500); $('.close-btn').show(); $(this).hide() }
+function offlineForm1()
+{ $('.chat').css({ 'background': 'url(/wp-content/themes/mototheme/images/chat-offline-bg.png)' }, 500); $('.chat').animate({ 'height': '460px' }, 1000); $('#chat_offline_message').show(); $('#send_offline_message').show(); $('#lounch_chat').hide(); $('.fist_p').text("Got questions about our templates? Drop us a line using the form below and we'll get right back to you!"); $('.second_p').hide() }
+function closeChat()
+{ $('.chat').animate({ 'right': '-382px' }, 500); $('.open-btn').show(); $(this).hide(); setCookie("Chat_visible", 1, 1) }
+</script>
+	
+	
+<!--	testimonial-->
+	
+	  
+  <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	
+	
+         <!-- Animate -->
+        <link rel="stylesheet" href="animation/animate.css">
+	
+	
+
+
+	
+
+<style>
+	
+	.pro_heading {padding-left: 10px;
+    background: url(images/hr.png) 0 21px repeat-x;
+       padding: 0;
+		width: 55%;
+    padding: 0;
+    margin: 0 auto;
+		
+
+    }
+	.pro_heading span { font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+    font-size: 36px;		
+    color: #000!important;
+    text-align: left;
+	background-color: #fff;
+	}
+	
+	.txt_smart {
+    position: absolute;
+    z-index: 1;
+		padding-top: 3em;
+}
+	
+.hd_S {
+  font-weight: 200;
+  margin: 0.4em 0;
+	font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+  padding: 3em 2em;
+  font-size: 18px;
+	color: #fff;
+}
+.hd_S { font-size: 3.5em; }
+.hd_S {
+  color: #fff;
+  font-size: 4em;
+}
+
+	</style>
+
+
+</head>
+
+<body>
+      
+	
+<div class="mainbg">
+	
+	<div class="b_line">
+					</div>
+	
+	<div class="chat" style="right: -382px;">
+	<div class="mode-btn close-btn"></div>
+			                <div class="mode-btn open-btn"></div>
+			
+			<div class="chat-container">
+			
+<iframe src="file:///C:/Users/dell/Desktop/website/form.html" class="add_Cls" scrolling="no"></iframe>
+		
+  </div>
+	
+	</div>
+	
+	
+	<div class="container">
+		<div class="row">
+		
+	<div class="menubg">
+		<div class="kx_logo">
+			<img src="images/kx_logo.png" alt="">
+		</div>
+		
+		<div id="toggle" >
+		  <div class="one"></div>
+		  <div class="two"></div>
+		  <div class="three"></div>
+		</div>
+
+			
+		<div class="menu">
+						<ul>
+				<li><a href="#">Schedule a Demo</a></li>
+					<li><a href="#">Download App</a>
+						
+				<ul class="submenu">
+					   <li><a href="#">Patient App</a></li>
+						<li><a href="#">Doctor App</a></li>
+						<li><a href="#">Regdesk App</a></li>
+						<li><a href="#">Admin App</a></li>
+					</ul></li>
+				<li><a href="#">Work With Us</a></li>
+				<li><a href="#">Free Registration</a></li>
+				<li><a href="#">Login</a></li>
+					
+				
+					
+<!--					<ul class="submenu">
+					   <li><a href="#">Patient App</a></li>
+						<li><a href="#">Doctor App</a></li>
+						<li><a href="#">Regdesk App</a></li>
+						<li><a href="#">Admin App</a></li>
+					</ul>-->
+				</ul>
+				
+		</div>
+			
+			</div>
+			</div>		
+	</div>
+<div style="clear: both; padding:0; margin: 0;"></div>
+	
+<!--	slider starts-->
+	<div class="container">
+		
+		  <div class="txt_smart">
+   	<div class="hd_S">SMART
+  <span
+     class="txt-rotate"
+     data-period="2000"
+     data-rotate='[ "Hospital.", "Clinic.", "Ambulance.", "Doctor.", "Patient." ]'></span>
+</div>
+    </div>
+		
+		
+   
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+		  <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="images/banner2.jpg" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="images/banner2.jpg" alt="Chicago" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="images/banner2.jpg" alt="New york" style="width:100%;">
+      </div>
+	  <div class="item">
+        <img src="images/banner2.jpg" alt="New york" style="width:100%;">
+      </div>
+    </div>
+
+	
+  </div>
+		
+	
+</div>
+	
+	<div class="blue-bg">
+	
+	<marquee width="80%" direction="left" loop="20" onMouseOver="this.stop()" onMouseOut="this.start()">
+		<div class="marquee">
+Digital Healthcare Platform Connecting Billion People.</div>
+</marquee>
+	
+	</div>
+	
+	
+<!--	form starts
+	
+	<div class="kx_from">
+	 <div class="container">
+	    <div class="row">
+			<div class="form">
+		   <div class="col-lg-6 col-sm-6 col-md-6 col-xs-6">
+			<div class="check">
+			<p>CHECK SCHEDULE</p>
+			<p style="margin-left: 55px;">CHECK SCHEDULE</p>
+					</div>		
+			   </div>
+			</div>
+		</div>	
+	 </div>	
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="form_1">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span class="form-group"></span>
+					<div class="label">Department's Name</div>
+					<div><input name="txtCompany" type="text" id="txtCompany" class="form-control dep_1"></div>
+				</div>
+
+
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span class="form-group"></span>
+					<div class="label">Department's Name</div>
+					<div><input name="txtCompany" type="text" id="patient" class="form-control dep_1"></div>
+				</div>
+				
+				
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span class="form-group"></span>
+					<div class="label">Department's Name</div>
+					<div><input name="txtCompany" type="text" id="phone" class="form-control dep_1"></div>
+				</div>
+				
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span class="form-group"></span>
+					<div class="label">Department's Name</div>
+					<div><input name="txtCompany" type="text" id="email" class="form-control dep_1"></div>
+				</div>
+			</div>
+			</div>
+		
+		
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+						<span class="form-group"></span>
+						<div class="label">
+						Doctor's Name
+						</div>
+						<div><input name="txtCompany" type="text" id="Doctor" class="form-control dep_1"></div>
+											
+					</div>
+					
+					<div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+						<span class="form-group"></span>
+						 <div class="label">
+						 Choose Date
+						 </div>
+						<div><input name="txtCompany" type="text" id="choose" class="form-control dep_1"></div>
+					</div>
+					
+						<div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+						<span class="form-group"></span>
+						 <div class="label">
+						 Department
+						 </div>
+						<div><input name="txtCompany" type="text" id="depart" class="form-control dep_1"></div>
+					</div>
+					
+					<div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+						<span class="form-group"></span>
+						 <div class="label">
+						 
+						 </div>
+						<div><input name="SUBMIT" value="SUBMIT" type="text" id="SUBMIT" class="button"></div>
+					</div>
+				</div>
+			</div>
+		
+		<div class="container">
+			<div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+				<div><input name="txtcompamy" value="VIEW SCHEDULE" type="text" id="sch" class="view">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>-->
+	
+	<div style=" clear: both; margin: 0; padding: 0;"></div>
+	
+<!--	BEST HOSPITAL IN TOWN-->
+	
+	<div class="kx_hospital">
+		
+			<div class="container">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-md-12">
+					<div class="pro_heading">
+						<span>OUR PRODUCTS</span>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+	<div class="bg_kxbest">
+		<div class="container">
+	<div class="row">			
+	
+	<div class="hi-icon-wrap hi-icon-effect-4 hi-icon-effect-4b">
+		<div class="col-lg-3 col-xs-6 col-md-3 col-sm-6">
+			<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-archive"></a></div>
+			<div class="block-right">
+					<a>SMART Hospital</a>
+			</div>			
+			</div>
+			</div>
+		
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+				<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-chat"></a></div>
+				
+		<div class="block-right">
+					<a>SMART Clinic</a>
+			</div>			
+			</div>
+				</div>
+		
+		<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+			<div class="block">
+				<div class="block-left"><a href="#" class="hi-icon hi-icon-bookmark"></a></div>
+				<div class="block-right">
+					<a>SMART Doctor</a>
+			</div>			
+			</div>
+				</div>
+			
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+				<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-user"></a></div>
+					
+					<div class="block-right">
+					<a>SMART PathLab</a>
+			</div>			
+			</div>
+				</div>
+<!--					<a href="#set-4" class="hi-icon hi-icon-contract">Contact</a>-->
+		
+			
+		</div>
+	</div>
+			</div>
+		
+	<div style=" clear: both; margin: 0; padding: 0;"></div>
+		<div class="container">
+	<div class="row">			
+	
+	<div class="hi-icon-wrap hi-icon-effect-4 hi-icon-effect-4b">
+		<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+			<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-archive"></a></div>
+				<div class="block-right">
+					<a>SMART Radiology</a>
+			</div>			
+			</div>
+			</div>
+		
+		
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+				<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-chat"></a></div>
+					<div class="block-right">
+					<a>SMART Ambulance</a>
+			</div>			
+			</div>
+				</div>
+		
+		<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+			<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-bookmark"></a></div>
+				<div class="block-right">
+					<a>SMART Pharmacy</a>
+			</div>			
+			</div>
+			</div>
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+				<div class="block">
+					<div class="block-left"><a href="#" class="hi-icon hi-icon-user"></a></div>
+					<div class="block-right">
+					<a>SMART EMR/EHR</a>
+			</div>			
+			</div>
+				</div>
+<!--					<a href="#set-4" class="hi-icon hi-icon-contract">Contact</a>-->
+			
+			
+		</div>
+	</div>
+			</div>
+		
+		
+	
+	<div class="container">
+	<div class="row">			
+	
+	<div class="hi-icon-wrap hi-icon-effect-4 hi-icon-effect-4b">
+		<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+			<div class="block">
+				<div class="block-left">
+					<a href="#" class="hi-icon hi-icon-archive"></a>
+				</div>
+				<div class="block-right">
+					<a>Satellite Clinic</a>
+			    </div>			
+			</div>
+	  </div>
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+	 <div class="block">
+				<div class="block-left">
+					<a href="#" class="hi-icon hi-icon-chat"></a>
+		 		</div>
+					<div class="block-right">
+					<a>Satellite Clinic</a>
+			       </div>			
+     </div>
+			</div>
+		
+		<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+			<div class="block">
+				<div class="block-left">
+					<a href="#" class="hi-icon hi-icon-bookmark"></a>
+				</div>
+				<div class="block-right">
+					<a>Medical IoT Devices</a>
+			       </div>			
+     </div>
+			</div>
+			<div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+				<div class="block">
+				<div class="block-left">
+					<a href="#" class="hi-icon hi-icon-user"></a>
+				</div>
+					<div class="block-right">
+					<a>Mobile/Web Apps</a>
+			       </div>			
+     </div>
+				</div>
+<!--					<a href="#set-4" class="hi-icon hi-icon-contract">Contact</a>-->
+			
+			
+		</div>
+	</div>
+			</div>
+		
+		</div>
+<!--		dfkjdkjf
+	<div class="kx_best">	
+	
+		<div class="container animation side-button in-veiw">
+			   <div class="row">
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital"><a href="file:///C:/Users/dell/Desktop/website/services.html" target="_blank">SMART Hospital</a></div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+		
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+				   
+				   
+				   
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				</div>	
+			
+			
+			  <div class="row">
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+		
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+				   
+				   
+				   
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				</div>	
+			
+			
+			<div class="row">
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+		
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				   
+				   
+				   <div class="col-lg-4 col-xs-4 col-md-4 col-sm-4">
+				   <div class="kx_image">   </div>
+					    <div class="kx_hospital">SMART Hospital</div>
+					   <div class="kx_text">Hospital Healthcloud or Healthcare Cloud brings<br> all operations management of a hospital towards<br> Patient side to go on the web. 
+						   Patient can be any place <br>easily access the services of hospitals</div>
+				   
+				   </div>
+				</div>	
+		    </div>-->
+	
+	
+	
+	<div style=" clear: both; margin: 0; padding: 0;"></div>
+	
+<!--	OUR DOCTORS-->
+	
+	<div id="kx_doctor">
+		
+		<div class="doc_bg">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-md-12">
+					<div class="heading_left">
+					AI-LED Digital Healthcare Platform Using Big Data IoT
+<!--			<h3 style="font-size: 15px;">Our doctors are specilized in their field and have more than 10yrs of experiences</h3>-->
+				</div>
+					</div>
+			</div>			
+			</div>
+			
+		</div>			
+			</div>
+			
+
+<!-- 
+old AI-Led
+
+
+<div class="container">
+	<div class="row">
+		<div class="span12">
+    	    <div class="well_small"> 
+                <div id="myCarousel_small" class="carousel slide">
+                 
+               
+                <!-- Carousel items 
+                <div class="carousel-inner">
+                    
+                <div class="item active">
+                	<div class="row-fluid">
+                	  <div class="span3">
+						  <div class="text">Real Time Analytics</div>						  
+						  <a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						
+						    <div class="text3"></div>
+						
+						</div>
+                	  <div class="span3">
+						   <div class="text">Business Intelligence Report</div>
+						  <a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						 
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						  </div>
+                	  <div class="span3">
+						  <div class="text">Personal Health Virtual Assistant</div>
+						  <a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						</div>
+                	  <div class="span3">
+						  <div class="text">Pathology Precision Analytics</div>
+						  <a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						
+						  <div class="text2"></div>
+						  <div class="text3"></div></div>
+                	</div>
+                </div>
+                 
+                <div class="item">
+                	<div class="row-fluid">
+                		<div class="span3"><a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						<div class="text">Health Monitoring</div>
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						</div>
+                		<div class="span3"><a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+						<div class="text">Clinical Research</div>
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						</div>
+                		<div class="span3"><a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+							<div class="text">Big Data</div>
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						</div>
+                		<div class="span3"><a href="#x" class="thumbnail_small"><img src="images/doctor.jpg" alt="Image" style="max-width:100%;" /></a>
+							<div class="text">Medical Imaging Analysis</div>
+						  <div class="text2"></div>
+						  <div class="text3"></div>
+						</div>
+                	</div>
+                </div>
+					
+					<a class="left carousel-control" href="#myCarousel_small" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel_small" data-slide="next">›</a>
+                </div>
+                 
+            </div> 
+		</div>
+	</div>
+</div>
+
+	
+</div>
+</div>
+	
+	</div>-->
+	
+
+<!--	Testimonials-->
+	
+	<div class="testimonial_main">
+	  <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel slide" data-ride="carousel" id="quote-carousel">
+                    <!-- Carousel Slides / Quotes -->
+                    <div class="carousel-inner text-center">
+                        <!-- Quote 1 -->
+                        <div class="item active">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <p>KareXpert is a great company with brilliant concept and motivated team. Most important part is the approachability after the implementation is done.” Good Luck to the company.</p>
+                                        <small>Mr. Ashish Wadhwa<br>Paras Hospital</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        <!-- Quote 2 -->
+                        <div class="item">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <p> Great Application by KareXpert, helps me to manage any OPD adequately and efficiently<br> Great going</p>
+                                        <small>Dr.Jyoti Kapoor Madan<br>Paras Hospital</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                        <!-- Quote 3 -->
+                        <div class="item">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <p>To whom so ever concern Paras Health App has been helpful for the patients and for me personally for smoothening the operation. KareXpert has provided solution to our daily problem in the hospital.</p>
+                                        <small>Dr.Preeti Singh<br>Paras Hospital</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+						
+						 <!-- Quote 4 -->
+                        <div class="item">
+                            <blockquote>
+                                <div class="row">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                        <p>Good and Innovative App by KareXpert. <br>Good Luck to the company</p>
+                                        <small>Dr. Arvind Mehra<br>Paras Hospital</small>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <!-- Bottom Carousel Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#quote-carousel" data-slide-to="0" class="active"><img class="img-responsive " src= "images/drAshish-Wadhwa.jpg" alt="Ashish">
+                        </li>
+                        <li data-target="#quote-carousel" data-slide-to="1"><img class="img-responsive" src="images/jyotikapoor.jpg" alt="Jyoti Kapoor Madan">
+                        </li>
+                        <li data-target="#quote-carousel" data-slide-to="2"><img class="img-responsive" src="images/Dr-Preeti-Singh.jpg" alt="Preeti">
+                        </li>
+						 <li data-target="#quote-carousel" data-slide-to="3"><img class="img-responsive" src="images/dr.arvind.jpg" alt="arvind">
+                        </li>
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+      
+    </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	
+	
+	
+			</div>
+	
+<!--	service-->
+	
+	<div id="kx_service">
+		
+		<div class="ser_bg">
+		
+		<div class="container">
+				<div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+					<h1>Our Services</h1><br>
+					<h3 style="font-size: 15px;">Our doctors are specilized in their field and have more than 10yrs of experiences</h3>
+				</div>
+			</div>
+
+			
+<div class="container">
+	<div class="row">
+		<div class="span12">
+    	    <div class="well_small"> 
+                <div id="myCarousel_service" class="carousel slide">
+                 
+               
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+                    
+                <div class="item active">
+                	<div class="row-fluid">
+                	  <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						
+                	 <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/doctor_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+                	 
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/nurse_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type</div>
+						  
+						</div>
+						
+                	  <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/kiosk.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/reg_desk.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+                	</div><!--/row-fluid-->
+                </div><!--/item-->
+                 
+                <div class="item">
+                	<div class="row-fluid">
+                	  <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						
+                	 <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+                	 
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type</div>
+						  
+						</div>
+						
+                	  <div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+						
+						<div class="span2"><a href="#x" class="thumbnail_small"><img src="images/patient_app.png" alt="Image" style="max-width:100%;" /></a>
+						<div class="text_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type </div>
+						  
+						</div>
+                	</div><!--/row-fluid-->
+                </div><!--/item-->
+					
+					<a class="left carousel-control" href="#myCarousel_service" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel_service" data-slide="next">›</a>
+                </div><!--/myCarousel-->
+                 
+            </div> 
+		</div>
+	</div>
+</div>
+
+	
+</div>
+</div>
+	
+	</div>
+	
+	<div style="clear: both; margin: 0; padding: 0;"></div>
+	
+	<div id="kx_news">
+		
+		<div class="news_bg">
+		
+		<div class="container">
+        <h3 class="h3">News Slider Demo - 1 </h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="news-slider" class="owl-carousel">
+                    <div class="post-slide">
+                        <div class="post-img">
+                            <a href="#">
+                                <img src="images/IT-Ministry.jpg" alt="">
+                                <div class="post-date">
+                                    <span class="date">10</span>
+                                    <span class="month">jan</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="post-review">
+                            <h3 class="post-title"><a href="#">World Healthcare Achievers Awards 2018</a></h3>
+                            <ul class="post-bar">
+                                <li><i class="fa fa-user"></i><a href="#">admin</a></li>
+                                <li><i class="fa fa-comment"></i><a href="#">5</a></li>
+                            </ul>
+                            <p class="post-description">Hon'ble Minister of State Health & Family Welfare(Govt. of India) Shri. Ashwini Kumar Choubey.</p>
+                        </div>
+                    </div>
+     
+                    <div class="post-slide">
+                        <div class="post-img">
+                            <a href="#">
+                                <img src="images/IT-Ministry.jpg" alt="">
+                                <div class="post-date">
+                                    <span class="date">13</span>
+                                    <span class="month">jan</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="post-review">
+                            <h3 class="post-title"><a href="#">Latest News Post</a></h3>
+                            <ul class="post-bar">
+                                <li><i class="fa fa-user"></i><a href="#">admin</a></li>
+                                <li><i class="fa fa-comment"></i><a href="#">7</a></li>
+                            </ul>
+                            <p class="post-description">The Healthcare Innovation Summit 2018 is planned as a global stage where healthcare services partners from South-Asian nations will assemble and deliberate, evaluate the....</p>
+                        </div>
+                    </div>
+					  <div class="post-slide">
+                        <div class="post-img">
+                            <a href="#">
+                               <img src="images/IT-Ministry.jpg" alt="">
+                                <div class="post-date">
+                                    <span class="date">13</span>
+                                    <span class="month">jan</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="post-review">
+                            <h3 class="post-title"><a href="#">Latest News Post</a></h3>
+                            <ul class="post-bar">
+                                <li><i class="fa fa-user"></i><a href="#">admin</a></li>
+                                <li><i class="fa fa-comment"></i><a href="#">7</a></li>
+                            </ul>
+                            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad magni, nesciunt obcaecati possimus quasi quibusdam quos ratione sequi sit veritatis.</p>
+                        </div>
+                    </div>
+                    <div class="post-slide">
+                        <div class="post-img">
+                            <a href="#">
+                                <img src="images/IT-Ministry.jpg" alt="">
+                                <div class="post-date">
+                                    <span class="date">13</span>
+                                    <span class="month">jan</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="post-review">
+                            <h3 class="post-title"><a href="#">Latest News Post</a></h3>
+                            <ul class="post-bar">
+                                <li><i class="fa fa-user"></i><a href="#">admin</a></li>
+                                <li><i class="fa fa-comment"></i><a href="#">7</a></li>
+                            </ul>
+                            <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad magni, nesciunt obcaecati possimus quasi quibusdam quos ratione sequi sit veritatis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+	</div>
+	
+	<div style="clear: both; margin: 0; padding: 0;"></div>
+	
+	 <section id="service-bottom">
+            <div class="container">
+				
+                    <div class="mobile-device">
+                       <img data-wow-delay="0.2s" class="img-responsive black wow fadeInLeftBig animated" src="images/medical1.png" alt="iPhone Blue" style="    visibility: visible;    animation-delay: 0.2s;    animation-name: fadeInLeftBig;">
+                        
+                    </div>
+                <div class="service-features wow fadeInRight animated" style="    visibility: visible;   animation-name: fadeInRight;">
+					<div class="philosophy_section">
+                    <h2>OUR PHILOSOPHY</h2>
+<!--
+                    <ul>
+                        <li>Responsive Design</li>
+                        <li>Modern And Clean Design</li>
+                        <li>Clean Code</li>
+                        <li>Browser Friendly</li>
+                    </ul>
+					
+-->
+					
+					<p style="line-height: 1.5em; font-size: 15px; color: #fff;">KareXpert is a Pioneer in designing technology platform with a Patient centric approach to make “Patient Continuity” a reality in Indian Healthcare. We are the only technology Company to design patented “Advanced Health Cloud Technology Stack” which connects Patients with all the care Providers -Hospitals, Nursing homes, Clinics, Doctors, Pharmacy shops, Diagnostic labs, Imaging Center, Blood Bank, Organ Bank, and Ambulance. Our Innovative Solutions are compatible to run on any Smart device-Mobile, Tablet, Laptop, Desktop via Mobile App & Web App.</p>
+					
+					<p style="line-height: 1.5em; font-size: 15px; color: #fff; margin-top: 22px;">Our Big Data and IoT based Cloud platform along with Health Analytics to offer benefits to Providers and Patients using predictive analytics and connecting IoT connected Patient devices.</p>
+						
+							<p style="line-height: 1.5em; font-size: 15px; color: #fff; margin-top: 22px;">KareXpert leader in technology started the Company in 2014 with Specific Purpose: To reinvent and redefine our Indian healthcare system to deliver the promise of “Health is national right for every Citizen”. We believe Technology Expertise and our focus, combined with healthcare provider partnership, will benefit the World the way no other network can!!</p>
+						
+							<p style="line-height: 1.5em; font-size: 15px; color: #fff; margin-top: 22px;">KareXpert strong technology and business team is going to transform the Healthcare Industry of India by creating highly differentiated & sustainable value for the Healthcare industry</p>
+						
+						
+						<div>
+						<div>
+							<input name="SUBMIT" value="Read More" type="text" id="read" class="button_read"></div>
+						</div>
+					</div>
+					</div>
+                </div>
+            
+        </section>
+	
+<div style="clear: both; margin: 0; padding: 0;"></div>
+				
+				<div class="footer">
+					
+						<div class="row_footer">
+
+							
+				<h4 style="font-size: 20px; margin-left: 20px; color: #fff;">CONNECT WITH OUR HEALTHCARE PROVIDERS</h4>		
+							<div class="container">
+								
+								
+							<div class="row">	
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+								<div class="doctor">	
+									<ul> Doctors
+										
+									<li>Doctors in Gurugram</li>	
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										
+										
+										</ul>
+	
+									
+								</div>	
+								</div>
+								
+								
+								
+								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+									<div class="doctor">
+							<ul> Doctors
+										
+									<li>Doctors in Gurugram</li>	
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										
+										
+										</ul>
+									</div>
+									
+								</div>	
+								
+								
+								<div class="doctor">
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+							<ul> Doctors
+										
+									<li>Doctors in Gurugram</li>	
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										
+										
+										</ul>
+									</div>
+									
+								</div>	
+								
+								<div class="doctor">
+												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ">
+									<ul> Doctors
+										
+									<li>Doctors in Gurugram</li>	
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										<li>Doctors in Gurugram</li>
+										
+										
+										</ul>	
+													</div>
+									
+								</div>	
+								</div><!--row end-->
+						</div>
+					</div>
+						 
+	</div>
+		
+	
+	
+	
+	
+	
+	
+	
+	</div>
+
+
+
+
+</body>
+</html>

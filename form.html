@@ -1,0 +1,304 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+	
+	<style>
+	
+	body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+	
+	.heading span{ font-family: Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", "serif";
+					font-size: 30px;
+					color: #000;
+				}
+
+	select {    width: 100%;
+    padding: 10px 0;
+    background-color: #eeeeee;
+    border: none;}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 33px;
+
+   background-color: white;
+}
+	.all_app { font-family: initial;
+    font-size: 17px;
+    color: #008ed2;
+	
+	}
+	
+	.all_app span { margin-left: 10px;}
+	.all_app ul { list-style: none; 
+					    padding: 0;
+                 } 
+	
+	.all_app li { margin-top: 10px;
+					float: left;}
+	
+	.all_app ul li { display: inline-block;
+						padding-bottom: 12px;}
+	
+	.all_app ul li a { text-decoration: none;
+					color: #008ed2;}
+	
+	.all_app ul.add { position: absolute;
+						width: 100px;
+						color: #000;
+							display: none;}
+		
+	
+		.all_app ul li:hover .add {display: block;}
+	
+	
+
+	
+	
+	
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+	margin-top: 20px;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+	
+	
+	
+	/* Slideshow container */
+.slideshow-container {
+  
+  position: absolute;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+
+/* The dots/bullets/indicators */
+.dot {  
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+	
+	.dhs_wapper {
+    font-family: initial;
+    color: #000;
+    font-size: 17px;
+		display: flex;
+}
+	
+	.dhs_wapper2{ 
+    font-family: initial;
+    color: #000;
+    font-size: 17px;
+		display: flex;
+		    padding-top: 10px;
+}
+	
+	.box1 { text-align: center;}
+	
+	 .box2 { margin-left: 32px;
+				text-align: center;}
+	
+	.box3 { text-align: center;
+				margin-left: 32px;
+				}
+	
+	</style>
+	
+<body>
+	
+	
+	<form action="/action_page.php" class="container">
+	  <div class="heading">
+		  <span>SMART Patient Services</span>
+	  </div>
+	  
+	  
+	  
+	  <div class="row">
+		  	<div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+				<div class="all_app">
+		  <ul>
+			  <li><a href="#" class="active1">Download App</a>
+			  	
+				
+					<ul class="add">
+				  <li>Patient App</li>
+						<li>Patient App</li>
+						<li>Patient App</li>
+				  
+				  </ul>
+					
+				
+			  
+			  </li>
+				<li><span>Patient Login</span> </li>
+				<li><span>Call Center</span></li>
+					</ul>
+					 </div>
+				
+				
+				</div>
+		  		  
+	  </div>
+	  
+	  <select name="Doctors">
+		  <option value="Doctors">Doctors</option>
+	  	<option value="Patients">Patients</option>
+	  
+	  </select>
+	  <br>
+	  <br>
+
+<!--    <label for="email"><b>Email</b></label>-->
+<!--    <input type="text" placeholder="Enter Email" name="email" required>-->
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+	  <br>
+	  
+	   <div class="row animation">
+		   <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		  <div class="dhs_wapper">
+			  
+			  	<div class="box1"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Video<br> Consultation</span></div>
+				<div class="box2"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Order<br> Medicine</span></div>
+				<div class="box3"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Perform<br> Lab Test</span></div>
+			  
+			  </div>
+<!--				<li>Digital Scan Test</li>
+					<li>Book Ambulance</li>
+				<li>Blood Bank</li>-->
+			  
+			 
+		  </div>
+		   
+		      <div class="col-lg-4 col-md-4 col-xs-4 col-sm-4">
+		  <div class="dhs_wapper2">
+			  
+			  	<div class="box1"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Video<br> Consultation</span></div>
+				<div class="box2"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Order<br> Medicine</span></div>
+				<div class="box3"><span><img src="images/new_reg1.png" width="50" height="50" alt=""/><br>Perform<br> Lab Test</span></div>
+			  
+			  </div>
+<!--				<li>Digital Scan Test</li>
+					<li>Book Ambulance</li>
+				<li>Blood Bank</li>-->
+			  
+			 
+		  </div>
+		   
+		  </div>
+		   
+	
+	  
+	  
+	  
+	
+    <button type="submit" class="btn">Login</button>
+  </form>
+	
+</body>
+</html>

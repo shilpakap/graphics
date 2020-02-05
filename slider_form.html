@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Untitled Document</title>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	
+	 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	
+	
+	<script>
+/* 	function myFunction() {
+   var x element = document.getElementByClassName("add_Cls");
+ x [0] element.classList.toggle("mode-btn");
+}*/
+</script> 
+	
+	
+	
+<style>
+
+	.mainbg { height: 1500px;}
+
+.AI_Led {
+    position: relative;
+    width: 50%;
+}
+	.image { display: block;
+				width: 100%;
+				height: auto;}
+	
+	.overlay { background-color: #142a9e;
+				bottom: 100%;
+				    width: 54.6%;
+				height: 0;
+	    position: absolute;
+    overflow: hidden;
+    transition: .5s ease;
+	opacity: 0.9;
+			bottom: 100%;}
+	
+
+.text_1 {
+    color: #fff;
+    font-size: 20px;
+	position: absolute;
+	text-align: center;
+	top: 50%;
+  left: 36%;
+}
+	
+	.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+	
+	
+	 .slider {
+        border-bottom: 3px solid #0f2448
+    }
+	
+	   .m-slider,
+    .m-slider img {
+        margin: 0 auto;
+        width: 100%;
+        padding: 0;
+        max-width: none!important;
+        height: auto;
+        position: relative
+    }
+    .m-slider {
+        background: #d01111
+    }
+	
+</style>
+	
+	
+</head>
+<body>
+
+	
+<div class="container">
+	
+	<div class="row">
+		<div class="AI_Led">
+		<div class="image">
+		<img src="images/real_time.jpg" alt="Real Time">
+			<div class="overlay">
+					<div class="text_1">Real Time Analysis</div>
+			
+			</div>
+		</div>
+		</div>
+	</div>
+	
+</div>
+
+	  <script>
+    $(document).ready(function () {
+
+        $(".sliderm").slick({
+
+            // normal options...
+            infinite: true,
+            dots: true,
+            speed: 800,
+            autoplay: true, autoplaySpeed: 1000,
+        });
+    });
+    </script>
+
+<div class="slider">
+        <div class="sliderm" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}'>
+            <div>
+                <a href="http://austria.asiamedassist.org/" target="_blank">
+                    <img src="images/IT-Ministry.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://china.asiamedassist.org/" target="_blank">
+                    <img src="images/IT-Ministry.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://india.asiamedassist.org/" target="_blank">
+                    <img src="images/ind.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://nepal.asiamedassist.org/" target="_blank">
+                    <img src="images/nep.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://srilanka.asiamedassist.org/" target="_blank">
+                    <img src="images/sri.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://thailand.asiamedassist.org/" target="_blank">
+                    <img src="images/tha.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://turkey.asiamedassist.org/" target="_blank">
+                    <img src="images/tur.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+            <div>
+                <a href="http://uae.asiamedassist.org/" target="_blank">
+                    <img src="images/uae.jpg" style="width:100%" alt="AMA Global Assistance">
+                </a>
+            </div>
+        </div>
+
+    </div>
+	
+
+		
+	
+	 
+	
+	
+
+
+
+	
+	
+</body>
+</html>

@@ -1,0 +1,107 @@
+
+
+
+<!doctype html>
+<html>
+<head>
+	
+	
+	<link rel="stylesheet" href= "clientjs/owl.carousel.css">
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+   $(document).ready(function(){
+	  var owl = $("#carousel").owlCarousel({
+  autoplay: true,
+  lazyLoad: true,
+  loop: true,
+  margin: 20,
+   /*
+  animateOut: 'fadeOut',
+  animateIn: 'fadeIn',
+  */
+  responsiveClass: true,
+  autoHeight: true,
+  autoplayTimeout: 7000,
+  smartSpeed: 800,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+
+    600: {
+      items: 2
+    },
+
+    1024: {
+      items: 3
+    },
+
+    1366: {
+      items: 4
+    }
+  }
+});
+	   });
+
+</script>
+
+
+<style>
+.owl-nav {
+    button {
+        position: absolute;
+        top: 50%;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        transition: all 0.3s ease-in-out;
+        &.owl-prev {
+            left: 0;
+        }
+        &.owl-next {
+            right: 0;
+        }
+    }
+}
+
+.owl-dots {
+    text-align: center;
+    padding-top: 15px;
+    button.owl-dot {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        display: inline-block;
+        background: #ccc;
+		margin: 0 3px;}
+
+        &.active {
+            background-color: #000;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+
+	
+	</style>
+
+</head>
+<body>
+     <div id="carousel" class="owl-carousel">
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=1" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=2" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=3" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=4" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=5" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=6" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=7" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=8" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=9" alt=""> </div>
+    <div class="item"> <img class="owl-lazy" data-src="https://placehold.it/350x250&text=10" alt=""> </div>
+  </div>
+</body>
+</html>
